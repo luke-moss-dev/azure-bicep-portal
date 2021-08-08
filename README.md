@@ -1,2 +1,2 @@
-# azure_bicep_portal
+# azure-bicep-portal
 testing of azure portal gui changes - 
