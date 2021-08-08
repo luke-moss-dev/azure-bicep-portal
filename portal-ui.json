@@ -1,0 +1,107 @@
+{
+    "$schema": "<relative path to createFormUI.schema.json>",
+    "view": {
+        "kind": "Form",
+        "properties": {
+            "title": "Azure landing zone accelerator",
+            "steps": [
+                {
+                    "name": "basics",
+                    "label": "Deployment location",
+                    "elements": [
+                        {
+                            "name": "resourceScope",
+                            "type": "Microsoft.Common.ResourceScope"
+                        }
+                    ]
+                },
+                {
+                    "name": "lzSettings",
+                    "label": "Azure core setup",
+                    "subLabel": {
+                        "preValidation": "Provide a company prefix for the management group structure that will be created.",
+                        "postValidation": "Done"
+                    },
+                    "bladeTitle": "Company prefix",
+                    "elements": [
+                        {
+                            "name": "info",
+                            "type": "Microsoft.Common.InfoBox",
+                            "visible": true,
+                            "options": {
+                                "text": "Azure Landing Zones ARM deployment requires access at the tenant root (/) scope. Visit this link to ensure you have the appropriate RBAC permission to complete the deployment",
+                                "uri": "https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin",
+                                "style": "Info"
+                            }
+                        },
+                        {
+                            "name": "mgmtGroup",
+                            "type": "Microsoft.Common.TextBlock",
+                            "visible": true,
+                            "options": {
+                                "text": "Azure Landing Zones will create the management group hierarchy under the Tenant Root Group with the prefix provided at this step.",
+                                "link": {
+                                    "label": "Learn more",
+                                    "uri": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/management-group-and-subscription-organization"
+                                }
+                            }
+                        },
+                        {
+                            "name": "esMgmtGroup",
+                            "type": "Microsoft.Common.TextBox",
+                            "label": "Management Group prefix",
+                            "toolTip": "Provide a prefix (max 10 characters, unique at tenant-scope) for the Management Group hierarchy and other resources created as part of Enterprise-scale.",
+                            "defaultValue": "",
+                            "constraints": {
+                                "required": true,
+                                "regex": "^[a-z0-9A-Z-]{1,10}$",
+                                "validationMessage": "The prefix must be 1-10 characters."
+                            }
+                        },
+                        {
+                            "name": "subOrgsOption",
+                            "type": "Microsoft.Common.OptionsGroup",
+                            "label": "Select dedicated subscriptions or single subscription for platform resources",
+                            "defaultValue": "Dedicated (recommended)",
+                            "toolTip": "If 'Yes' is selected when also adding a subscription for management, ARM will deploy resources and enable them for continious compliance.",
+                            "constraints": {
+                                "allowedValues": [
+                                    {
+                                        "label": "Dedicated (recommended)",
+                                        "value": "Dedicated"
+                                    },
+                                    {
+                                        "label": "Single",
+                                        "value": "Single"
+                                    }
+                                ]
+                            },
+                            "visible": true
+                        }
+
+
+                    ]
+                },
+
+                {
+                    "name": "firstStep",
+                    "label": "Resource Group Name",
+                    "type": "Microsoft.Common.TextBox",
+                    "toolTip": "You're a tool.",
+                    "defaultValue": ""
+                }
+
+      
+
+            ]
+        },
+        "outputs": {
+            "parameters": {
+                "resourceGroupName": "[steps('firstStep').resourceGroupName]"
+
+            },
+            "kind": "Tenant",
+            "location": "eastus"
+        }
+    }
+}
