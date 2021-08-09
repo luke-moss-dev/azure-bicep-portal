@@ -67,13 +67,14 @@
                     ]
                 }
             ]
+
         },
 
         "outputs": {
             "parameters": {
                 "denyRegions": "[steps('denyRegions').denyRegions]"
             },
-            "kind": "Tenant",
+            "kind": "Subscription",
             "location": "[steps('basics').resourceScope.location.name]"
         }
     
