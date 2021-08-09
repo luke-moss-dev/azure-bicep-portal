@@ -41,15 +41,8 @@
                   "allowExisting": true
                 },
                 "location": {
-                  "label": "Custom label for location",
-                  "toolTip": "provide a useful tooltip",
-                  "resourceTypes": [
-                    "Microsoft.Compute/virtualMachines"
-                  ],
-                  "allowedValues": [
-                    "eastus",
-                    "westus2"
-                  ]
+                  "label": "Location of this deployment.",
+                  "toolTip": "Origin of deployment"
                 }
               }
             ],
