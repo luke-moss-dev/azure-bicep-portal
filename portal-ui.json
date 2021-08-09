@@ -73,7 +73,7 @@
             "parameters": {
                 "denyRegions": "[steps('denyRegions').denyRegions]"
             },
-            "kind": "Subscription",
+            "kind": "ResourceGroup",
             "location": "[steps('basics').resourceScope.location.name]"
         }
     
