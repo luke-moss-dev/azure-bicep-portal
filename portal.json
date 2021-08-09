@@ -17,6 +17,7 @@
         "name": "deny-regions",
         "properties": {
           "policyType": "Custom",
+          "scope": "[subscription().id]",
           "mode": "All",
           "parameters": {},
           "policyRule": {
