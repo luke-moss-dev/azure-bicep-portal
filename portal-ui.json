@@ -1,80 +1,123 @@
 {
-    "$schema": "<relative path to createFormUI.schema.json>",
+    "$schema": "createFormUI.schema.json",
     "view": {
-        "kind": "Form",
-        "properties": {
-            "title": "SHI Azure Deny Region Deployment Policy",
-            "steps": [
-                {
-                    "name": "basics",
-                    "label": "Deployment location",
-                    "elements": [
-                        {
-                            "name": "resourceScope",
-                            "type": "Microsoft.Common.ResourceScope"
-                        }
+      "kind": "Form",
+      "properties": {
+        "title": "titleFooSub",
+        "steps": [
+          {
+            "name": "basics",
+            "label": "Basics",
+            "elements": [
+              {
+                "name": "resourceScope",
+                "type": "Microsoft.Common.ResourceScope",
+                "subscription": {
+                  "constraints": {
+                    "validations": [
+                      {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                      },
+                      {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                      }
                     ]
+                  },
+                  "resourceProviders": [
+                    "<Resource Provider>"
+                  ]
                 },
-                {
-                    "name": "denyRegions",
-                    "label": "Policy - Deny Region Deployments",
-                    "elements": [
-                        {
-                            "name": "denyRegions",
-                            "type": "Microsoft.Common.DropDown",
-                            "label": "Deny Region Deployments",
-                            "placeholder": "Select all regions to deny deployment...",
-                            "toolTip": "The regions that will be denied deployment",
-                            "multiselect": true,
-                            "selectAll": true,
-                            "filter": true,
-                            "filterPlaceholder": "Filter items ...",
-                            "multiLine": false,
-                            "constraints": {
-                                "allowedValues": [
-                                    {
-                                        "label": "eastus",
-                                        "value": "eastus"
-                                    },
-                                    {
-                                        "label": "eastus2",
-                                        "value": "eastus2"
-                                    },
-                                    {
-                                        "label": "southcentralus",
-                                        "value": "southcentralus"
-                                    },
-                                    {
-                                        "label": "westus2",
-                                        "value": "westus2"
-                                    },
-                                    {
-                                        "label": "westus3",
-                                        "value": "westus3"
-                                    },
-                                    {
-                                        "label": "australiaeast",
-                                        "value": "australiaeast"
-                                    },
-                                    {
-                                        "label": "southeastasia",
-                                        "value": "southeastasia"
-                                    }
-                                ]
-                            }
-
-                        }
+                "resourceGroup": {
+                  "constraints": {
+                    "validations": [
+                      {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                      }
                     ]
+                  },
+                  "allowExisting": true
+                },
+                "location": {
+                  "label": "Custom label for location",
+                  "toolTip": "provide a useful tooltip",
+                  "resourceTypes": [
+                    "Microsoft.Compute/virtualMachines"
+                  ],
+                  "allowedValues": [
+                    "eastus",
+                    "westus2"
+                  ]
                 }
-            ]
-
+              }
+            ],
+            "description": "Customized description with **markdown**, see [more](https://www.microsoft.com)."
+          },
+                  {
+                      "name": "denyRegions",
+                      "label": "Policy - Deny Region Deployments",
+                      "elements": [
+                          {
+                              "name": "denyRegions",
+                              "type": "Microsoft.Common.DropDown",
+                              "label": "Deny Region Deployments",
+                              "placeholder": "Select all regions to deny deployment...",
+                              "toolTip": "The regions that will be denied deployment",
+                              "multiselect": true,
+                              "selectAll": true,
+                              "filter": true,
+                              "filterPlaceholder": "Filter items ...",
+                              "multiLine": false,
+                              "constraints": {
+                                  "allowedValues": [
+                                      {
+                                          "label": "eastus",
+                                          "value": "eastus"
+                                      },
+                                      {
+                                          "label": "eastus2",
+                                          "value": "eastus2"
+                                      },
+                                      {
+                                          "label": "southcentralus",
+                                          "value": "southcentralus"
+                                      },
+                                      {
+                                          "label": "westus2",
+                                          "value": "westus2"
+                                      },
+                                      {
+                                          "label": "westus3",
+                                          "value": "westus3"
+                                      },
+                                      {
+                                          "label": "australiaeast",
+                                          "value": "australiaeast"
+                                      },
+                                      {
+                                          "label": "southeastasia",
+                                          "value": "southeastasia"
+                                      }
+                                  ]
+                              }
+  
+                          }
+                      ]
+                  }
+  
+  
+  
+        ]
+      },
+      "outputs": {
+        "parameters": {
+            "denyRegions": "[steps('denyRegions').denyRegions]"
         },
-
-        "outputs": {
-            "parameters": {
-                "denyRegions": "[steps('denyRegions').denyRegions]"
-            }
-        }
-    
+        "kind": "Subscription",
+        "location": "[steps('basics').resourceScope.location.name]",
+        "subscriptionId": "[steps('basics').resourceScope.subscription.id]"
+      }
     }
-}
+  }
