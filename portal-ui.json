@@ -53,7 +53,7 @@
                 }
               }
             ],
-            "description": "Customized description with **markdown**, see [more](https://www.microsoft.com)."
+            "description": "**SHI Deny Deployment by Region Policy**"
           },
                   {
                       "name": "denyRegions",
