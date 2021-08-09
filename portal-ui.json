@@ -73,7 +73,6 @@
             "parameters": {
                 "denyRegions": "[steps('denyRegions').denyRegions]"
             },
-            "kind": "Tenant",
             "location": "[steps('basics').resourceScope.location.name]"
         }
     
