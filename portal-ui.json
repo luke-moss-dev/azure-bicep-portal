@@ -56,10 +56,12 @@
                         }
                     ]
                 }
-            ],
+            ]
+        },
+
         "outputs": {
             "denyRegions": "[steps('denyRegions').denyRegions]"
         }
-    }
+    
     }
 }
