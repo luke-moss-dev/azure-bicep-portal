@@ -1,9 +1,7 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-    "handler": "Microsoft.Azure.CreateUIDef",
-    "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [ ],
+    "$schema": "<relative path to createFormUI.schema.json>",
+    "properties": {
+        "title": "SHI Azure Deny Region Deployment Policy",
         "steps": [
             {
                 "name": "denyRegions",
