@@ -72,7 +72,7 @@
         "outputs": {
             "parameters": {
                 "denyRegions": "[steps('denyRegions').denyRegions]",
-                "subscription": "[steps('basics').resourceScope.subscription.subscriptionId]"
+                "subscription": "[steps('basics').resourceScope.subscription.id]"
             },
             "kind": "Tenant",
             "location": "[steps('basics').resourceScope.location.name]"
