@@ -15,9 +15,9 @@
         "type": "Microsoft.Authorization/policyDefinitions",
         "apiVersion": "2020-09-01",
         "name": "deny-regions",
+        "scope": "[[subscription().id]",
         "properties": {
           "policyType": "Custom",
-          "scope": "[subscription().id]",
           "mode": "All",
           "parameters": {},
           "policyRule": {
