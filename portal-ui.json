@@ -6,16 +6,6 @@
             "title": "SHI Azure Deny Region Deployment Policy",
             "steps": [
                 {
-                    "name": "basics",
-                    "label": "Basics",
-                    "elements": [
-                        {
-                            "name": "resourceScope",
-                            "type": "Microsoft.Common.ResourceScope"
-                        }
-                    ]
-                },
-                {
                     "name": "denyRegions",
                     "label": "Policy - Deny Region Deployments",
                     "elements": [
@@ -71,8 +61,7 @@
 
         "outputs": {
             "parameters": {
-                "denyRegions": "[steps('denyRegions').denyRegions]",
-                "subscription": "[steps('basics').resourceScope.subscription.id]"
+                "denyRegions": "[steps('denyRegions').denyRegions]"
             },
             "kind": "Tenant",
             "location": "[steps('basics').resourceScope.location.name]"

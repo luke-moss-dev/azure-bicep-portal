@@ -2,12 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "subscription": {
-            "type": "string",
-            "metadata": {
-                "description": "The subscription from the UI deployment."
-            }
-        },
       "denyRegions": {
         "type": "array",
         "metadata": {
@@ -21,7 +15,6 @@
         "type": "Microsoft.Authorization/policyDefinitions",
         "apiVersion": "2020-09-01",
         "name": "deny-regions",
-        "scope": "[parameters('subscription')]",
         "properties": {
           "policyType": "Custom",
           "mode": "All",
