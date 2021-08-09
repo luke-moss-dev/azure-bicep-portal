@@ -1,62 +1,65 @@
 {
     "$schema": "<relative path to createFormUI.schema.json>",
-    "properties": {
-        "title": "SHI Azure Deny Region Deployment Policy",
-        "steps": [
-            {
-                "name": "denyRegions",
-                "label": "Policy - Deny Region Deployments",
-                "elements": [
-                    {
-                        "name": "denyRegions",
-                        "type": "Microsoft.Common.DropDown",
-                        "label": "Deny Region Deployments",
-                        "placeholder": "Select all regions to deny deployment...",
-                        "toolTip": "The regions that will be denied deployment",
-                        "multiselect": true,
-                        "selectAll": true,
-                        "filter": true,
-                        "filterPlaceholder": "Filter items ...",
-                        "multiLine": false,
-                        "constraints": {
-                            "allowedValues": [
-                                {
-                                    "label": "eastus",
-                                    "value": "eastus"
-                                },
-                                {
-                                    "label": "eastus2",
-                                    "value": "eastus2"
-                                },
-                                {
-                                    "label": "southcentralus",
-                                    "value": "southcentralus"
-                                },
-                                {
-                                    "label": "westus2",
-                                    "value": "westus2"
-                                },
-                                {
-                                    "label": "westus3",
-                                    "value": "westus3"
-                                },
-                                {
-                                    "label": "australiaeast",
-                                    "value": "australiaeast"
-                                },
-                                {
-                                    "label": "southeastasia",
-                                    "value": "southeastasia"
-                                }
-                            ]
-                        }
+    "view": {
+        "kind": "Form",
+        "properties": {
+            "title": "SHI Azure Deny Region Deployment Policy",
+            "steps": [
+                {
+                    "name": "denyRegions",
+                    "label": "Policy - Deny Region Deployments",
+                    "elements": [
+                        {
+                            "name": "denyRegions",
+                            "type": "Microsoft.Common.DropDown",
+                            "label": "Deny Region Deployments",
+                            "placeholder": "Select all regions to deny deployment...",
+                            "toolTip": "The regions that will be denied deployment",
+                            "multiselect": true,
+                            "selectAll": true,
+                            "filter": true,
+                            "filterPlaceholder": "Filter items ...",
+                            "multiLine": false,
+                            "constraints": {
+                                "allowedValues": [
+                                    {
+                                        "label": "eastus",
+                                        "value": "eastus"
+                                    },
+                                    {
+                                        "label": "eastus2",
+                                        "value": "eastus2"
+                                    },
+                                    {
+                                        "label": "southcentralus",
+                                        "value": "southcentralus"
+                                    },
+                                    {
+                                        "label": "westus2",
+                                        "value": "westus2"
+                                    },
+                                    {
+                                        "label": "westus3",
+                                        "value": "westus3"
+                                    },
+                                    {
+                                        "label": "australiaeast",
+                                        "value": "australiaeast"
+                                    },
+                                    {
+                                        "label": "southeastasia",
+                                        "value": "southeastasia"
+                                    }
+                                ]
+                            }
 
-                    }
-                ]
-            }
-        ],
+                        }
+                    ]
+                }
+            ],
         "outputs": {
             "denyRegions": "[steps('denyRegions').denyRegions]"
         }
+    }
     }
 }
